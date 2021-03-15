@@ -1,0 +1,10 @@
+#!/bin/bash
+LOG_LOCATION=/var/log/ffmpeg_wrapper.log
+
+uuid=$(uuidgen)
+
+echo "$(date) | START $uuid | $*" >> $LOG_LOCATION
+
+_ffmpeg $*  >> $LOG_LOCATION 2>&1
+
+echo "$(date) | STOP $uuid" >> $LOG_LOCATION

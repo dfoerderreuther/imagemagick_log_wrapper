@@ -1,0 +1,10 @@
+#!/bin/bash
+LOG_LOCATION=/var/log/convert_wrapper.log
+
+uuid=$(uuidgen)
+
+echo "$(date) | START $uuid | $*" >> $LOG_LOCATION
+
+_convert $*  >> $LOG_LOCATION 2>&1
+
+echo "$(date) | STOP $uuid" >> $LOG_LOCATION
